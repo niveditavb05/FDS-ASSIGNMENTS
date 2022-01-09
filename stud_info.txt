@@ -1,0 +1,3 @@
+shruti  1  a
+nivedita  2  b
+gayatri  3  c
