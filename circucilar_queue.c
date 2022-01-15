@@ -1,0 +1,97 @@
+#include <stdio.h>  
+    
+    # define max 10 
+    int queue[max];  
+    int front=-1;  
+    int rear=-1; 
+
+    void enqueue(int );
+    void dequeue();
+    void display_queue();
+
+    int main()  
+    {  
+        int choice=1,x;   
+        while(choice<4 && choice!=0)   
+        {  
+        printf("\n  1: Insert ");  
+        printf("\n  2: Delete  ");  
+        printf("\n  3: Display ");  
+        printf("\nEnter your choice");  
+        scanf("%d", &choice);  
+        
+        switch(choice)  
+        {  
+            
+            case 1:  
+        
+            printf("Enter the element which is to be inserted");  
+            scanf("%d", &x);  
+            enqueue(x);  
+            break;  
+            case 2:  
+            dequeue();  
+            break;  
+            case 3:  
+            display_queue();  
+    
+        }}  
+        return 0;  
+    }  
+
+    void enqueue(int element)  
+    {  
+        if(front==-1 && rear==-1)  
+        {  
+            front=0;  
+            rear=0;  
+            queue[rear]=element;  
+        }  
+        else if((rear+1)%max==front)  
+        {  
+            printf("Queue is overflow..");  
+        }  
+        else  
+        {  
+            rear=(rear+1)%max;       
+            queue[rear]=element;       
+        }  
+    }  
+    
+
+    void  dequeue()  
+    {  
+        if((front==-1) && (rear==-1))  
+        {  
+            printf("\nQueue is underflow..");  
+        }  
+    else if(front==rear)  
+    {  
+    printf("\nThe dequeued element is %d", queue[front]);  
+    front=-1;  
+    rear=-1;  
+    }   
+    else  
+    {  
+        printf("\nThe dequeued element is %d", queue[front]);  
+    front=(front+1)%max;  
+    }  
+    }  
+
+    void display_queue()  
+    {  
+        int i=front;  
+        if(front==-1 && rear==-1)  
+        {  
+            printf("\n Queue is empty..");  
+        }  
+        else  
+        {  
+            printf("\nElements in a Queue are :");  
+            while(i<=rear)  
+            {  
+                printf("%d,", queue[i]);  
+                i=(i+1)%max;  
+            }  
+        }  
+    }
